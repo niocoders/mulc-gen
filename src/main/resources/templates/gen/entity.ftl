@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 /**
 * @ClassName: ${myClass.className}
 * @Description: ${myClass.tableComment}实体类

@@ -23,8 +23,8 @@ public class DataUtils {
     private static String HOST = "127.0.0.1";
     //数据库端口
     private static String PORT = "3306";
-    //    数据库名
-    private static String DATABASENAME = "kitty";
+    //数据库名
+    private static String DATABASENAME = "dradmin";
     //数据库链接URL
     private static String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASENAME + "?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&serverTimezone=UTC";
     //数据源链接用户名
@@ -104,16 +104,17 @@ public class DataUtils {
 
     /**
      * 根据tableName获取类信息
+     *
      * @param tableName
      * @return
      * @throws SQLException
      */
-    public static MyClass getClassInfoByName(String tableName)throws SQLException{
+    public static MyClass getClassInfoByName(String tableName) throws SQLException {
         MyClass myClass = new MyClass();
         List<MyClass> tableInfo = getTableInfo();
-        for (MyClass a:tableInfo){
-            if (a.getClassName().equals(tableName)){
-                myClass=a;
+        for (MyClass a : tableInfo) {
+            if (a.getClassName().equals(tableName)) {
+                myClass = a;
             }
 
         }
@@ -127,7 +128,7 @@ public class DataUtils {
      * @param tableName
      * @return
      */
-    public static MyClass getColumnInfo(String tableName,String moudleName) throws SQLException {
+    public static MyClass getColumnInfo(String tableName, String moudleName) throws SQLException {
         MyClass myClass = getClassInfoByName(tableName);
         ArrayList<Field> fieldList = new ArrayList<>();
         Connection conn = init();
@@ -183,13 +184,16 @@ public class DataUtils {
                 fieldType = "Date";
                 break;
             case "DATETIME":
-                fieldType = "LocalDate";
+                fieldType = "Date";
                 break;
             case "BIGINT":
                 fieldType = "Long";
                 break;
             case "DECIMAL":
-                fieldType="BigDecimal";
+                fieldType = "BigDecimal";
+                break;
+            case "TINYINT":
+                fieldType="int";
                 break;
             default:
                 fieldType = "String";

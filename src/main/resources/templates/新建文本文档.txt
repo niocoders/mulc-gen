@@ -1,0 +1,13 @@
+    /**
+    * 分页查找${myClass.tableComment}
+    *
+    * @return
+    */
+    @ApiOperation(value = "分页查找${myClass.tableComment}")
+    @GetMapping("/selectPage")
+    public ResponseEntity selectPage(PageRequest pageRequest) {
+    PageHelper.startPage(pageRequest.getPageNum(),pageRequest.getPageSize());
+    List<${myClass.entityName}> list = ${'${myClass.serviceName}'?uncap_first}.selectAll();
+        PageInfo page = new PageInfo(list);
+        return new ResponseEntity(page, HttpStatus.OK);
+        }
